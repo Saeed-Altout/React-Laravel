@@ -1,33 +1,35 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useState, ReactNode } from "react";
 
-interface StateContextProps {
-  user: any | null;
+interface User {}
+
+export interface StateContextProps {
+  user: User | null;
   token: string | null;
-  setToken: (token: string) => void;
-  setUser: (user: any) => void;
+  setToken: (token: string | null) => void;
+  setUser: (user: User | null) => void;
   logout: () => void;
 }
 
-const StateContext = createContext<StateContextProps>({
-  user: {},
+export const StateContext = createContext<StateContextProps>({
+  user: null,
   token: null,
   setToken: () => {},
   setUser: () => {},
   logout: () => {},
 });
 
-export default function ContextProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const [user, setUser] = useState({});
-  const [token, _setToken] = useState<string | null>(
+interface ContextProviderProps {
+  children: ReactNode;
+}
+
+export default function ContextProvider({ children }: ContextProviderProps) {
+  const [user, setUser] = useState<User | null>(null);
+  const [token, setTokenState] = useState<string | null>(
     localStorage.getItem("access_token")
   );
 
-  const setToken = (token: string) => {
-    _setToken(token);
+  const setToken: StateContextProps["setToken"] = (token) => {
+    setTokenState(token);
     if (token) {
       localStorage.setItem("access_token", token);
     } else {
@@ -35,9 +37,9 @@ export default function ContextProvider({
     }
   };
 
-  const logout = () => {
-    _setToken(null);
-    setUser({});
+  const logout: StateContextProps["logout"] = () => {
+    setTokenState(null);
+    setUser(null);
     localStorage.removeItem("access_token");
   };
 
@@ -47,5 +49,3 @@ export default function ContextProvider({
     </StateContext.Provider>
   );
 }
-
-export const useStateContext = () => useContext(StateContext);
