@@ -6,3 +6,7 @@ export { default as Platforms } from "@/pages/dashboard/Platforms";
 export { default as WorksType } from "@/pages/dashboard/WorksType";
 export { default as Settings } from "@/pages/dashboard/Settings";
 export { default as Projects } from "@/pages/dashboard/Projects";
+export { default as NotFound } from "@/pages/dashboard/NotFound";
+export { default as DashboardLayout } from "@/pages/dashboard/DashboardLayout";
+export { default as AuthLayout } from "@/pages/dashboard/AuthLayout";
+export { default as Users } from "@/pages/dashboard/Users";

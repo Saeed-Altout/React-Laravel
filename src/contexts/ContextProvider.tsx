@@ -22,7 +22,7 @@ interface ContextProviderProps {
   children: ReactNode;
 }
 
-export default function ContextProvider({ children }: ContextProviderProps) {
+export function ContextProvider({ children }: ContextProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [token, setTokenState] = useState<string | null>(
     localStorage.getItem("access_token")
