@@ -1,6 +1,7 @@
 import { LogOut, LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { routes } from "@/config";
+import { useStateContext } from "@/hooks/useStateContext";
 
 interface NavItemProps {
   href: string;
@@ -20,6 +21,8 @@ const NavItem = ({ href, icon: Icon }: NavItemProps) => {
 };
 
 export const SidebarMobile = () => {
+  const { logout } = useStateContext();
+
   return (
     <aside className="w-16 md:hidden flex border-r flex-col transition-all">
       <div className="min-h-16 h-16 flex justify-center items-center">
@@ -33,7 +36,7 @@ export const SidebarMobile = () => {
         </ul>
       </div>
       <div className="min-h-16 h-16 flex justify-center items-center mt-auto">
-        <Button variant="destructive" size="icon">
+        <Button onClick={() => logout()} variant="destructive" size="icon">
           <LogOut className="h-4 w-4" />
         </Button>
       </div>

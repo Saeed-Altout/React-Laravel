@@ -1,6 +1,7 @@
 import { LogOut, LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { routes } from "@/config";
+import { useStateContext } from "@/hooks/useStateContext";
 
 interface NavItemProps {
   label: string;
@@ -27,8 +28,9 @@ const NavItem = ({ href, label, icon: Icon }: NavItemProps) => {
 };
 
 export const SidebarDesktop = () => {
+  const { logout } = useStateContext();
   return (
-    <aside className="w-72 md:flex hidden border-r flex-col transition-all">
+    <aside className="w-60 md:flex hidden border-r flex-col transition-all">
       <div className="min-h-16 h-16 flex justify-center items-center">
         <p className="text-3xl font-semibold">MicroTech</p>
       </div>
@@ -42,7 +44,12 @@ export const SidebarDesktop = () => {
       <div className="min-h-16 h-16 flex justify-center items-center mt-auto px-4">
         <ul className="w-full px-4 space-y-1">
           <li>
-            <Button variant="destructive" size="icon" className="w-full">
+            <Button
+              onClick={() => logout()}
+              variant="outline"
+              size="icon"
+              className="w-full"
+            >
               <LogOut className="h-4 w-4 mr-2" /> Logout
             </Button>
           </li>

@@ -1,4 +1,4 @@
-import { Layout, Settings } from "lucide-react";
+import { Code, Layout, Settings } from "lucide-react";
 
 export const routes = [
   {
@@ -10,5 +10,10 @@ export const routes = [
     label: "Settings",
     icon: Settings,
     href: "/settings",
+  },
+  {
+    label: "Technologies",
+    icon: Code,
+    href: "/technologies",
   },
 ];

@@ -1,5 +1,5 @@
-import { useStateContext } from "@/hooks/useStateContext";
 import { Navigate, Outlet } from "react-router-dom";
+import { useStateContext } from "@/hooks/useStateContext";
 
 export default function AuthLayout() {
   const { token } = useStateContext();
@@ -9,7 +9,7 @@ export default function AuthLayout() {
   }
 
   return (
-    <div>
+    <div className="flex justify-center items-center h-full w-full">
       <Outlet />
     </div>
   );

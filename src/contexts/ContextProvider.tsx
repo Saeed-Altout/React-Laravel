@@ -1,6 +1,12 @@
 import { createContext, useState, ReactNode } from "react";
 
-interface User {}
+interface User {
+  id: number | string;
+  user_name: string;
+  email: string;
+  token: string;
+  refresh_token: string;
+}
 
 export interface StateContextProps {
   user: User | null;
@@ -23,7 +29,9 @@ interface ContextProviderProps {
 }
 
 export function ContextProvider({ children }: ContextProviderProps) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUserState] = useState<User | null>(
+    JSON.parse(localStorage.getItem("user") || "{}")
+  );
   const [token, setTokenState] = useState<string | null>(
     localStorage.getItem("access_token")
   );
@@ -36,11 +44,20 @@ export function ContextProvider({ children }: ContextProviderProps) {
       localStorage.removeItem("access_token");
     }
   };
+  const setUser: StateContextProps["setUser"] = (user) => {
+    setUserState(user);
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("user");
+    }
+  };
 
   const logout: StateContextProps["logout"] = () => {
     setTokenState(null);
     setUser(null);
     localStorage.removeItem("access_token");
+    localStorage.removeItem("user");
   };
 
   return (
