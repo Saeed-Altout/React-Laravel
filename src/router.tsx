@@ -9,6 +9,7 @@ import {
   Settings,
   Technologies,
   Toolkit,
+  WorksType,
 } from "./pages/dashboard";
 
 export const router = createBrowserRouter([
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path: "/platforms",
         element: <Platforms />,
+      },
+      {
+        path: "/worksType",
+        element: <WorksType />,
       },
       {
         path: "/settings",

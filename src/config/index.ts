@@ -1,4 +1,4 @@
-import { Code, Layers, Layout, Settings, Square } from "lucide-react";
+import { Code, Layers, Layout, Settings, Square, Tag } from "lucide-react";
 
 export const routes = [
   {
@@ -25,5 +25,10 @@ export const routes = [
     label: "Platforms",
     icon: Square,
     href: "/platforms",
+  },
+  {
+    label: "Works Type",
+    icon: Tag,
+    href: "/worksType",
   },
 ];
