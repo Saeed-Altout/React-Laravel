@@ -7,6 +7,7 @@ import {
   NotFound,
   Settings,
   Technologies,
+  Toolkit,
 } from "./pages/dashboard";
 
 export const router = createBrowserRouter([
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: "/technologies",
         element: <Technologies />,
+      },
+      {
+        path: "/toolkit",
+        element: <Toolkit />,
       },
       {
         path: "/settings",
