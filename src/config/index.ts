@@ -1,4 +1,4 @@
-import { Code, Layers, Layout, Settings } from "lucide-react";
+import { Code, Layers, Layout, Settings, Square } from "lucide-react";
 
 export const routes = [
   {
@@ -20,5 +20,10 @@ export const routes = [
     label: "Tools-kit",
     icon: Layers,
     href: "/toolkit",
+  },
+  {
+    label: "Platforms",
+    icon: Square,
+    href: "/platforms",
   },
 ];

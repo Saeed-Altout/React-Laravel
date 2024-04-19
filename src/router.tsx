@@ -5,6 +5,7 @@ import {
   Dashboard,
   DashboardLayout,
   NotFound,
+  Platforms,
   Settings,
   Technologies,
   Toolkit,
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: "/toolkit",
         element: <Toolkit />,
+      },
+      {
+        path: "/platforms",
+        element: <Platforms />,
       },
       {
         path: "/settings",
