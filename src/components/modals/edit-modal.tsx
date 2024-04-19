@@ -2,24 +2,17 @@ import { ChangeEvent, useState } from "react";
 
 import { toast } from "sonner";
 import { AxiosError } from "axios";
-import { ImagePlus } from "lucide-react";
 
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
 import { Form } from "@/components/ui/form";
 import { Modal } from "@/components/ui/modal";
-import { Input } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
 import { Button } from "@/components/ui/button";
+import { FormImage } from "@/components/ui/form-image";
+import { FormInput } from "@/components/ui/form-input";
 
 import axios from "@/lib/axios";
 
@@ -83,6 +76,7 @@ export const EditModal = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const data = new FormData();
+
     data.append("id", initialData.id);
     data.append("name", values.name);
     files[0] !== undefined && data.append("icon", files[0]);
@@ -90,7 +84,7 @@ export const EditModal = ({
     try {
       setIsLoading(true);
       await axios.post(`${endpoint}/edit`, data);
-      toast.success(messageSuccess || "Success");
+      toast.success(messageSuccess || `Success, ${values.name} update.`);
       onCancel();
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -115,54 +109,19 @@ export const EditModal = ({
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-          <FormField
-            control={form.control}
+          <FormInput
             name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input disabled={isLoading} placeholder="name" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Name"
+            placeholder="name"
+            isLoading={isLoading}
           />
-          <FormField
-            control={form.control}
+
+          <FormImage
             name="icon"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="cursor-pointer h-[250px] w-full border-dashed border rounded-md flex justify-center items-center overflow-hidden">
-                  {field.value ? (
-                    <div className="h-auto w-32 overflow-hidden">
-                      <img
-                        src={field.value}
-                        alt="Icon"
-                        className="object-contain"
-                        style={{ width: "100%", height: "auto" }}
-                      />
-                    </div>
-                  ) : (
-                    <ImagePlus
-                      strokeWidth={0.5}
-                      className="w-20 h-20 text-muted-foreground"
-                    />
-                  )}
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className="w-full h-full hidden"
-                    type="file"
-                    accept="image/*"
-                    disabled={isLoading}
-                    onChange={(e) => handleImage(e, field.onChange)}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+            isLoading={isLoading}
+            handleImage={handleImage}
           />
+
           <div className="pt-5 flex items-center justify-end gap-4 w-full">
             <Button
               type="button"
@@ -173,7 +132,7 @@ export const EditModal = ({
               Cancel
             </Button>
             <Button disabled={isLoading} type="submit">
-              Save changes
+              Create
               {isLoading && <Spinner className="ml-2 text-muted-foreground" />}
             </Button>
           </div>

@@ -3,10 +3,11 @@ import { useState } from "react";
 import { AxiosError } from "axios";
 import { Trash, Edit } from "lucide-react";
 
-import axios from "@/lib/axios";
 import { Button } from "@/components/ui/button";
 import { EditModal } from "@/components/modals/edit-modal";
 import { TrashModal } from "@/components/modals/trash-modal";
+
+import axios from "@/lib/axios";
 
 interface CellActionProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
