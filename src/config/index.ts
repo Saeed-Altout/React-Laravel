@@ -29,6 +29,6 @@ export const routes = [
   {
     label: "Works Type",
     icon: Tag,
-    href: "/worksType",
+    href: "/workTypes",
   },
 ];

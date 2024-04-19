@@ -9,7 +9,7 @@ import {
   Settings,
   Technologies,
   Toolkit,
-  WorksType,
+  WorkTypes,
 } from "./pages/dashboard";
 
 export const router = createBrowserRouter([
@@ -38,8 +38,8 @@ export const router = createBrowserRouter([
         element: <Platforms />,
       },
       {
-        path: "/worksType",
-        element: <WorksType />,
+        path: "/workTypes",
+        element: <WorkTypes />,
       },
       {
         path: "/settings",
