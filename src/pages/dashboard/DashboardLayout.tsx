@@ -20,7 +20,9 @@ export default function DashboardLayout() {
         </nav>
         <main className="flex flex-1 transition-all h-[calc(100vh-64px)]">
           <div className="overflow-auto px-4 py-2 w-full">
-            <Outlet />
+            <div className="w-[calc(100vw-96px)] md:w-[calc(100vw-272px)] space-y-6">
+              <Outlet />
+            </div>
           </div>
         </main>
       </div>
