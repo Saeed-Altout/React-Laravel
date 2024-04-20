@@ -1,4 +1,12 @@
-import { Code, Layers, Layout, Settings, Square, Tag } from "lucide-react";
+import {
+  Code,
+  Layers,
+  Layout,
+  Settings,
+  Square,
+  Tag,
+  Users,
+} from "lucide-react";
 
 export const routes = [
   {
@@ -30,5 +38,10 @@ export const routes = [
     label: "Works Type",
     icon: Tag,
     href: "/workTypes",
+  },
+  {
+    label: "Members",
+    icon: Users,
+    href: "/members",
   },
 ];

@@ -4,6 +4,7 @@ import { AuthLayout, Login } from "./pages/auth";
 import {
   Dashboard,
   DashboardLayout,
+  Members,
   NotFound,
   Platforms,
   Settings,
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: "/workTypes",
         element: <WorkTypes />,
+      },
+      {
+        path: "/members",
+        element: <Members />,
       },
       {
         path: "/settings",
