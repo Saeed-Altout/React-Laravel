@@ -14,6 +14,7 @@ interface FormInputProps {
   name: string;
   label: string;
   placeholder?: string;
+  type?: string;
 }
 
 export const FormInput = ({
@@ -21,6 +22,7 @@ export const FormInput = ({
   name,
   label,
   placeholder,
+  type = "text",
 }: FormInputProps) => {
   const { control } = useFormContext();
 
@@ -32,7 +34,12 @@ export const FormInput = ({
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <FormControl>
-            <Input disabled={isLoading} placeholder={placeholder} {...field} />
+            <Input
+              type={type}
+              disabled={isLoading}
+              placeholder={placeholder}
+              {...field}
+            />
           </FormControl>
           <FormMessage />
         </FormItem>
